@@ -23,11 +23,12 @@ void Lista::l_wypisz() {
 void Lista::l_wszystko() {
 }
 int Lista::l_ilosc_el() {
-    if(!el_poczatkowy)return 0;
-    int *element = el_poczatkowy;
-    int i = 0;
-    for(; el_koncowy; i++) {
-        // element = el_pocz.le_nast
-    }
-    return i;
+    return rozmiar;
 }
+Lista *l_nastepny(){
+    return el_lista_nastepna
+}
+void l_nast_zmien(Lista *nast){
+    el_lista_nastepna = nast;
+}
+
