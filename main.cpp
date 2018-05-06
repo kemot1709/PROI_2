@@ -7,7 +7,6 @@ Lista dwukierunkowa pewnych danych i templatka tych danych
 
 #include <iostream>
 
-#include "funkcje.h"
 #include "lista.h"
 #include "typ.h"
 #include "warunki.h"
@@ -26,5 +25,7 @@ int main()
     A.t_wstaw_wsp(Q,W,E,R,T);
     A.t_czy_pusta_wsp(Q);
     A.t_nastepny_poprzedni_wsp(5);
+    A.t_rowne_listy_int();
+    A.t_rowne_listy_wsp();
     return 0;
 }

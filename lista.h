@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "funkcje.h"
 #include "typ.h"
 
 using namespace std;
@@ -137,8 +136,35 @@ public:
             return true;
         }
     }
-    // porównywanie
-    // wypisywanie
+    bool operator== (const Lista &X){ // porównywanie dwóch list
+        if (rozmiar!=X.rozmiar){
+            return false;
+        }
+        else{
+            Element<T> *pomoc;
+            Element<T> *pomocX;
+            pomoc=el_poczatkowy;
+            pomocX=X.el_poczatkowy;
+            while(pomoc!=NULL){
+                if (pomoc->e_wypisz()!=pomocX->e_wypisz()){
+                    return false;
+                }
+                else{
+                    pomoc=pomoc->e_nastepny();
+                    pomocX=pomocX->e_nastepny();
+                }
+            }
+            return true;
+        }
+    }
+    bool operator!=(const Lista &X){ // porównywanie dwóch list
+        if ((*this) == X){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
     /*
         Lista *l_nastepny() { // zwraca wskaxnik na nastepny listy
             return el_lista_nastepna;

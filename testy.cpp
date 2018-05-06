@@ -12,10 +12,10 @@ Wspolrzedne::Wspolrzedne(double szer, double dl) {
 }
 
 bool Wspolrzedne::operator!= (const Wspolrzedne &X) {
-    if (w_szerokosc == X.w_szerokosc && w_dlugosc == X.w_dlugosc){
+    if(w_szerokosc == X.w_szerokosc && w_dlugosc == X.w_dlugosc) {
         return false;
     }
-    else{
+    else {
         return true;
     }
 }
@@ -156,8 +156,8 @@ void Testowanie::t_wstaw_wsp(Wspolrzedne info1, Wspolrzedne info2, Wspolrzedne i
     }
     cout << "TEST PRAWIDLOWY" << endl;
 }
-void Testowanie::t_czy_pusta_wsp(Wspolrzedne info){
-    cout << endl << "TEST" << endl << "sprawdzanie czy lista jest pusta" << endl<< "WLASNA ZMIENNA" << endl;
+void Testowanie::t_czy_pusta_wsp(Wspolrzedne info) {
+    cout << endl << "TEST" << endl << "sprawdzanie czy lista jest pusta" << endl << "WLASNA ZMIENNA" << endl;
     Lista<Wspolrzedne> Lista;
     if(!Lista.l_zero()) {
         cout << "Error 1";
@@ -170,26 +170,80 @@ void Testowanie::t_czy_pusta_wsp(Wspolrzedne info){
     }
     cout << "TEST PRAWIDLOWY" << endl;
 }
-void Testowanie::t_nastepny_poprzedni_wsp(int n){
-    cout << endl << "TEST" << endl << "zwracanie elementu nastepnego i poprzedniego do podanego" << endl<< "WLASNA ZMIENNA" << endl;
+void Testowanie::t_nastepny_poprzedni_wsp(int n) {
+    cout << endl << "TEST" << endl << "zwracanie elementu nastepnego i poprzedniego do podanego" << endl << "WLASNA ZMIENNA" << endl;
     Lista<Wspolrzedne> Lista;
     for(int i = 1; i <= 10; i++) {
-            Wspolrzedne zm(i,i);
+        Wspolrzedne zm(i, i);
         Lista.l_wstaw_koniec(zm);
     }
-    Wspolrzedne zm(n,n);
+    Wspolrzedne zm(n, n);
     if(Lista.l_wypisz(n) != zm) {
         cout << "Error 1";
         return;
     }
-    Wspolrzedne zt(n+1,n+1);
+    Wspolrzedne zt(n + 1, n + 1);
     if(Lista.l_wypisz_weicej(n) != zt) {
         cout << "Error 2";
         return;
     }
-    Wspolrzedne zy(n-1,n-1);
+    Wspolrzedne zy(n - 1, n - 1);
     if(Lista.l_wypisz_mniej(n) != zy) {
         cout << "Error 3";
+        return;
+    }
+    cout << "TEST PRAWIDLOWY" << endl;
+}
+void Testowanie::t_rowne_listy_int() {
+    cout << endl << "TEST" << endl << "porownywanie list" << endl;
+    Lista<int> Lista2;
+    Lista<int> Lista;
+    if(Lista2 != Lista) {
+        cout << "Error 1";
+        return;
+    }
+    Lista.l_wstaw_koniec(1);
+    if(Lista2 == Lista) {
+        cout << "Error 2";
+        return;
+    }
+    Lista2.l_wstaw_koniec(2);
+    if(Lista2 == Lista) {
+        cout << "Error 3";
+        return;
+    }
+    Lista2.l_wstaw_koniec(1);
+    Lista2.l_usun(1);
+    if(Lista2 != Lista) {
+        cout << "Error 4";
+        return;
+    }
+    cout << "TEST PRAWIDLOWY" << endl;
+}
+void Testowanie::t_rowne_listy_wsp() {
+    cout << endl << "TEST" << endl << "porownywanie list"<<endl<<"WLASNA ZMIENNA" << endl;
+    Lista<Wspolrzedne> Lista2;
+    Lista<Wspolrzedne> Lista;
+    if(Lista2 != Lista) {
+        cout << "Error 1";
+        return;
+    }
+    Wspolrzedne zm(1,1);
+    Wspolrzedne zn(2,1);
+    Lista.l_wstaw_koniec(zm);
+    if(Lista2 == Lista) {
+        cout << "Error 2";
+        return;
+    }
+    Lista2.l_wstaw_koniec(zn);
+    if(Lista2 == Lista) {
+        cout << "Error 3";
+        return;
+    }
+    Lista2.l_wstaw_koniec(zm);
+    Lista2.l_usun(1);
+    if(Lista2 != Lista) {
+        cout << "Error 4";
         return;
     }
     cout << "TEST PRAWIDLOWY" << endl;

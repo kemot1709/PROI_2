@@ -14,9 +14,11 @@ public:
     void t_wstaw_int (int,int,int,int,int);
     void t_czy_pusta_int (int);
     void t_nastepny_poprzedni_int (int);
+    void t_rowne_listy_int();
     void t_wstaw_wsp (Wspolrzedne,Wspolrzedne,Wspolrzedne,Wspolrzedne,Wspolrzedne);
     void t_czy_pusta_wsp (Wspolrzedne);
     void t_nastepny_poprzedni_wsp (int);
+    void t_rowne_listy_wsp();
 
 };
 

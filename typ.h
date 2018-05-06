@@ -5,8 +5,6 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "funkcje.h"
-
 using namespace std;
 
 template <typename T>
