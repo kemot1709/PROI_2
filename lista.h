@@ -1,3 +1,11 @@
+/*
+Tomasz Indeka
+PROI
+zadanie 2
+Lista dwukierunkowa pewnych danych i templatka tych danych
+szablon listy
+*/
+
 #ifndef LISTA_H
 #define LISTA_H
 
@@ -19,7 +27,6 @@ class Lista {
     Element<T> *el_poczatkowy; // wskaxnik na el pocz¹tkowy listy
     Element<T> *el_koncowy; // wskaxnik na el koncowy listy
     int rozmiar; // aktualny rozmiar listy
-//    Lista *el_lista_nastepna; // wskaxnik na nast list
 public:
     Lista() {  // konstruktor
         el_poczatkowy = NULL;
@@ -136,42 +143,43 @@ public:
             return true;
         }
     }
-    bool operator== (const Lista &X){ // porównywanie dwóch list
-        if (rozmiar!=X.rozmiar){
+    bool operator== (const Lista &X) { // porównywanie dwóch list
+        if(rozmiar != X.rozmiar) {
             return false;
         }
-        else{
+        else {
             Element<T> *pomoc;
             Element<T> *pomocX;
-            pomoc=el_poczatkowy;
-            pomocX=X.el_poczatkowy;
-            while(pomoc!=NULL){
-                if (pomoc->e_wypisz()!=pomocX->e_wypisz()){
+            pomoc = el_poczatkowy;
+            pomocX = X.el_poczatkowy;
+            while(pomoc != NULL) {
+                if(pomoc->e_wypisz() != pomocX->e_wypisz()) {
                     return false;
                 }
-                else{
-                    pomoc=pomoc->e_nastepny();
-                    pomocX=pomocX->e_nastepny();
+                else {
+                    pomoc = pomoc->e_nastepny();
+                    pomocX = pomocX->e_nastepny();
                 }
             }
             return true;
         }
     }
-    bool operator!=(const Lista &X){ // porównywanie dwóch list
-        if ((*this) == X){
+    bool operator!=(const Lista &X) { // porównywanie dwóch list
+        if((*this) == X) {
             return false;
         }
-        else{
+        else {
             return true;
         }
     }
-    /*
-        Lista *l_nastepny() { // zwraca wskaxnik na nastepny listy
-            return el_lista_nastepna;
+    friend ostream& operator<<(ostream &stream, const Lista &X) { // drukowanie listy
+        Element<T> *pomoc ;
+        pomoc = X.el_poczatkowy;
+        while(pomoc != NULL) {
+            stream << pomoc->e_wypisz() << endl;
+            pomoc = pomoc->e_nastepny();
         }
-        void l_nast_zmien(Lista *nast){ // pozwala na zmiane nastepnego listy
-        el_lista_nastepna = nast;
+        return stream;
     }
-    */
 };
 #endif // LISTA_H

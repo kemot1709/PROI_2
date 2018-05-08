@@ -1,3 +1,11 @@
+/*
+Tomasz Indeka
+PROI
+zadanie 2
+Lista dwukierunkowa pewnych danych i templatka tych danych
+szablon elementu - zawarto≈õci listy
+*/
+
 #ifndef TYP_H
 #define TYP_H
 
@@ -13,12 +21,12 @@ class Element {
     Element<T> *e_nast;
     Element<T> *e_poprz;
 public:
-    Element(T info, Element<T> *poprz = NULL, Element<T> *nast = NULL) {
+    Element(T info, Element<T> *poprz = NULL, Element<T> *nast = NULL) { // kostruktor elementu
         e_info = info;
         e_nast = nast;
         e_poprz = poprz;
     }
-    ~Element() {
+    ~Element() { // destruktor (pusty)
     }
     Element<T> *e_nastepny() { // zwraca wskaxnik na nastepny element listy
         return e_nast;
@@ -32,8 +40,8 @@ public:
     void e_poprz_zmien(Element<T> *nast) { // pozwala na zmiane poprzedniego elementu listy
         e_poprz = nast;
     }
-    T e_wypisz (){ // zwraca zawartoúÊ elementu
-    return e_info;
+    T e_wypisz() { // zwraca zawarto≈ì√¶ elementu
+        return e_info;
     }
 };
 #endif // TYP_H

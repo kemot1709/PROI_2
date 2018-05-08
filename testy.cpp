@@ -1,3 +1,11 @@
+/*
+Tomasz Indeka
+PROI
+zadanie 2
+Lista dwukierunkowa pewnych danych i templatka tych danych
+definicja testów i w³asnego typu danych
+*/
+
 #include <iostream>
 
 #include "testy.h"
@@ -10,7 +18,6 @@ Wspolrzedne::Wspolrzedne(double szer, double dl) {
     w_szerokosc = szer;
     w_dlugosc = dl;
 }
-
 bool Wspolrzedne::operator!= (const Wspolrzedne &X) {
     if(w_szerokosc == X.w_szerokosc && w_dlugosc == X.w_dlugosc) {
         return false;
@@ -19,7 +26,10 @@ bool Wspolrzedne::operator!= (const Wspolrzedne &X) {
         return true;
     }
 }
-
+ostream& operator<<(ostream &stream, const Wspolrzedne &X) {
+    stream << X.w_szerokosc << ", " << X.w_dlugosc;
+    return stream;
+}
 void Testowanie::t_wstaw_int(int info1, int info2, int info3, int info4, int info5) {
     cout << endl << "TEST" << endl << "wstawianie na poczatek, koniec, zwracanie elementow i rozmiaru i usuwanie" << endl;
     Lista<int> Lista;
@@ -221,15 +231,15 @@ void Testowanie::t_rowne_listy_int() {
     cout << "TEST PRAWIDLOWY" << endl;
 }
 void Testowanie::t_rowne_listy_wsp() {
-    cout << endl << "TEST" << endl << "porownywanie list"<<endl<<"WLASNA ZMIENNA" << endl;
+    cout << endl << "TEST" << endl << "porownywanie list" << endl << "WLASNA ZMIENNA" << endl;
     Lista<Wspolrzedne> Lista2;
     Lista<Wspolrzedne> Lista;
     if(Lista2 != Lista) {
         cout << "Error 1";
         return;
     }
-    Wspolrzedne zm(1,1);
-    Wspolrzedne zn(2,1);
+    Wspolrzedne zm(1, 1);
+    Wspolrzedne zn(2, 1);
     Lista.l_wstaw_koniec(zm);
     if(Lista2 == Lista) {
         cout << "Error 2";
@@ -247,4 +257,24 @@ void Testowanie::t_rowne_listy_wsp() {
         return;
     }
     cout << "TEST PRAWIDLOWY" << endl;
+}
+void Testowanie::t_wypisz_int(int info1, int info2, int info3, int info4, int info5) {
+    cout << endl << "TEST" << endl << "drukowanie list" << endl;
+    Lista<int> Lista;
+    Lista.l_wstaw_koniec(info1);
+    Lista.l_wstaw_koniec(info2);
+    Lista.l_wstaw_koniec(info3);
+    Lista.l_wstaw_koniec(info4);
+    Lista.l_wstaw_koniec(info5);
+    cout << Lista;
+}
+void Testowanie::t_wypisz_wsp(Wspolrzedne info1, Wspolrzedne info2, Wspolrzedne info3, Wspolrzedne info4, Wspolrzedne info5) {
+    cout << endl << "TEST" << endl << "drukowanie list" << endl << "WLASNA ZMIENNA" << endl;
+    Lista<Wspolrzedne> Lista;
+    Lista.l_wstaw_koniec(info1);
+    Lista.l_wstaw_koniec(info2);
+    Lista.l_wstaw_koniec(info3);
+    Lista.l_wstaw_koniec(info4);
+    Lista.l_wstaw_koniec(info5);
+    cout << Lista;
 }
